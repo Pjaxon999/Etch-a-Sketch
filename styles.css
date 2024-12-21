@@ -7,7 +7,15 @@ body {
     padding: 0;
 }
 
+h1 {
+    text-align: center;
+}
+
 .container {
-    display:flex;
-    
+    border: 1px solid #000000;
+    display: flex;
+    flex-flow: row wrap;
+    width: 502px;
+    height: 502px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
