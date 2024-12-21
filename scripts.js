@@ -8,7 +8,7 @@ const container = document.querySelector(".container");
 function gridMaker() {
     for (let i =0; i < 256; i++) {
         let newDiv = document.createElement("div");
-        newDiv.setAttribute("style", "color: #D9D9D9; flex: 0 0 6.25%")
+        newDiv.setAttribute("style", "background-color: #D9D9D9; flex: 0 0 6.25%")
         container.appendChild(newDiv);
     }
 } 
