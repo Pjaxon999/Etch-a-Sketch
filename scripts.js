@@ -16,7 +16,7 @@ document.addEventListener('mousemove', (e) => {
         e.preventDefault();
     }
 });
-document.addEventListener('mmouseup', (e) => {
+document.addEventListener('mouseup', (e) => {
     e.preventDefault();
 });
 window.addEventListener('selectstart', (e) => {
@@ -47,9 +47,22 @@ function newArea() {
     }
 };
 
-// function for rainbow mode to change the color of the drawings to random values
+// Initialize variables for random color and draw functions
+let randomNum1;
+let randomNum2;
+let randomNum3;
+
+// Function to toggle rainbow mode
+let rainbowBool = false;
 function rainbow(){
-    console.log("This doesn't work yet pls go away")
+    rainbowBool = !rainbowBool;
+}
+
+// Generate random colors for rainbow mode
+function randomColorGen(){
+    randomNum1 = Math.floor(Math.random()* 256);
+    randomNum2 = Math.floor(Math.random()* 256);
+    randomNum3 = Math.floor(Math.random()* 256);
 };
 
 // Create a grid of divs inside the "container" div
@@ -57,7 +70,7 @@ function gridMaker() {
     for (let i = 0; i < gridArea; i++) {
         let newDiv = document.createElement("div");
         newDiv.setAttribute("style", `background-color: #D9D9D9; flex: 0 0 ${gridAreaPercentage}%`);
-        newDiv.setAttribute("class", "canvas")
+        newDiv.setAttribute("class", "canvas");
         newDiv.addEventListener('mouseover', draw);
         newDiv.addEventListener('mousedown', draw);
         container.appendChild(newDiv);
@@ -67,8 +80,11 @@ function gridMaker() {
 // Main drawing logic
 function draw(e) {
     let drawDiv = e.currentTarget; 
-    if (mouseDown == true || e.type == "mousedown") {
+    if ((mouseDown == true || e.type == "mousedown") && rainbowBool == false) {
         drawDiv.style.backgroundColor = "black";
+    } else if ((mouseDown == true || e.type == "mousedown") && rainbowBool == true) {
+        randomColorGen();
+        drawDiv.style.backgroundColor = `rgba(${randomNum1},${randomNum2},${randomNum3},1)`; 
     }
 };
 
