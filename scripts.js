@@ -24,9 +24,9 @@ window.addEventListener('selectstart', (e) => {
 });
 
 // Track mouse being held down 
-let mouseDown = false
-document.body.onmousedown = () => (mouseDown = true)
-document.body.onmouseup = () => (mouseDown = false)
+let mouseDown = false;
+document.body.onmousedown = () => (mouseDown = true);
+document.body.onmouseup = () => (mouseDown = false);
 
 // Set variables for user requested grid
 let gridArea = 256;
@@ -42,10 +42,14 @@ function newArea() {
     } else {
         gridArea = userArea * userArea;
         gridAreaPercentage = 100 / userArea;
-        console.log(gridAreaPercentage)
         clear();
         gridMaker();
     }
+};
+
+// function for rainbow mode to change the color of the drawings to random values
+function rainbow(){
+    console.log("This doesn't work yet pls go away")
 };
 
 // Create a grid of divs inside the "container" div
@@ -75,10 +79,27 @@ function clear() {
 
 // Clears canvas but maintains current div size
 function shake() {
+    let canvas = document.querySelector(".container");
+    canvas.classList.toggle("animate");
     let canvasArea = document.querySelectorAll(".canvas");
     canvasArea.forEach(div => {
         div.style.backgroundColor = "#D9D9D9";
     });
+    resetAnim();
 };
 
+// Function to reset the animation so that the button will work on every click and not just every other click
+function resetAnim(){
+    let canvas = document.querySelector(".container");
+    canvas.classList.remove("animate");
+    void canvas.offsetWidth;
+    canvas.classList.add("animate");
+};
+
+// Add click events for each button
+document.getElementById("shake").addEventListener("click", shake);
+document.getElementById("changegrid").addEventListener("click", newArea);
+document.getElementById("rainbow").addEventListener("click", rainbow);
+
+// Creates the default grid when the page loads
 gridMaker();
