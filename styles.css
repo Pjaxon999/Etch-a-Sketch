@@ -7,6 +7,9 @@ body {
     padding: 0;
     background-color: #E71E26;
     color: #FFFFFFFF;
+    user-select: none;
+    overflow: hidden;
+    -webkit-user-drag: none;
 }
 
 h1 {
@@ -28,4 +31,5 @@ h1 {
     height: 502px;
     margin: auto;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: crosshair;
 }
